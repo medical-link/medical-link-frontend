@@ -6,6 +6,8 @@
     "plugin:@typescript-eslint/recommended"
   ],
   "rules": {
+    "comma-dangle": ["error", "always-multiline"],
+
     "react/jsx-filename-extension": [
       1,
       {
@@ -13,6 +15,13 @@
       }
     ],
     "react/jsx-props-no-spreading": "off",
-    "react/function-component-definition": "off"
+    "react/function-component-definition": "off",
+    "react/require-default-props": "off",
+
+    "import/no-extraneous-dependencies": "off",
+    "import/no-unresolved": "off",
+    "import/extensions": "off",
+    "import/named": "off",
+    "import/prefer-default-export": "off"
   }
 }
