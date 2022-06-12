@@ -7,7 +7,16 @@
   ],
   "rules": {
     "comma-dangle": ["error", "always-multiline"],
+    "eol-last": ["error", "always"],
+    "quotes": [1, "single", "avoid-escape"],
+    "semi": ["error", "always"],
+    "no-unused-vars": [
+      2,
+      { "vars": "all", "args": "after-used", "ignoreRestSiblings": true }
+    ],
 
+    "react/jsx-no-bind": 2,
+    "react/require-optimization": 2,
     "react/jsx-filename-extension": [
       1,
       {
