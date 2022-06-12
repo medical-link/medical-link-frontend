@@ -51,6 +51,6 @@
   "engines": {
     "node": "16.15.1",
     "npm": "please-use-yarn",
-    "yarn": "1.22.19"
+    "yarn": "1.22"
   }
 }
