@@ -41,7 +41,7 @@ const Button = (
     <button
       type="button"
       ref={childRef}
-      className={cn(styles.button, { [styles['full-width']]: fullWidth })}
+      className={cn(className, styles.button, { [styles['full-width']]: fullWidth })}
       disabled={disabled}
       {...restProps}
     >

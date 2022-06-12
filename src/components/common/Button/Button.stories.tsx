@@ -10,6 +10,7 @@ export default {
 const Template: ComponentStory<typeof Button> = (args: ButtonProps) => (
   <Button {...args} />
 );
+
 export const ButtonBasic = Template.bind({});
 ButtonBasic.args = {
   labelText: 'TEST',
