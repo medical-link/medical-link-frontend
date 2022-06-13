@@ -1,0 +1,21 @@
+{
+  "recommendations": [
+    "streetsidesoftware.code-spell-checker", // Code Spell Checker
+    "dbaeumer.vscode-eslint", // ESLint
+    "flowtype.flow-for-vscode", // Flow Language Support
+    "eamodio.gitlens", // GitLens
+    "humao.rest-client", // REST Client
+    "Gruntfuggly.todo-tree", // Todo Tree
+    "alefragnani.Bookmarks", // Bookmarks
+    "formulahendry.auto-complete-tag", // Auto Complete Tag
+    "formulahendry.auto-close-tag",
+    "formulahendry.auto-rename-tag",
+    "lottiefiles.vscode-lottie", // LottieFiles for VSCode
+    "vincaslt.highlight-matching-tag", // Highlight Matching Tag
+    "formulahendry.code-runner", // Code Runner
+    "vscode-icons-team.vscode-icons", // vscode-icons
+    "clinyong.vscode-css-modules", // CSS Modules
+    "sibiraj-s.vscode-scss-formatter", // SCSS Formatter
+    "stylelint.vscode-stylelint" // Stylelint
+  ]
+}

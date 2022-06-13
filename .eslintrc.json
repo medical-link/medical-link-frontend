@@ -1,3 +1,37 @@
 {
-  "extends": "next/core-web-vitals"
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "airbnb",
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "comma-dangle": ["error", "always-multiline"],
+    "eol-last": ["error", "always"],
+    "quotes": [1, "single", "avoid-escape"],
+    "semi": ["error", "always"],
+    "no-unused-vars": [
+      2,
+      { "vars": "all", "args": "after-used", "ignoreRestSiblings": true }
+    ],
+
+    "react/jsx-no-bind": 2,
+    "react/require-optimization": 2,
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".tsx", ".ts", "jsx", "js"]
+      }
+    ],
+    "react/jsx-props-no-spreading": "off",
+    "react/function-component-definition": "off",
+    "react/require-default-props": "off",
+    "react/jsx-no-useless-fragment": ["error", { "allowExpressions": true }],
+
+    "import/no-extraneous-dependencies": "off",
+    "import/no-unresolved": "off",
+    "import/extensions": "off",
+    "import/named": "off",
+    "import/prefer-default-export": "off"
+  }
 }
