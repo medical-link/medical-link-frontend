@@ -11,19 +11,21 @@ const Template: ComponentStory<typeof Button> = (args: ButtonProps) => (
   <Button {...args} />
 );
 
-export const ButtonBasic = Template.bind({});
-ButtonBasic.args = {
+export const ButtonNormal = Template.bind({});
+ButtonNormal.args = {
+  fullWidth: true,
   labelText: 'TEST',
+};
+
+export const ButtonKakao = Template.bind({});
+ButtonKakao.args = {
+  isKakao: true,
+  fullWidth: true,
 };
 
 export const ButtonDisabled = Template.bind({});
 ButtonDisabled.args = {
   disabled: true,
-  labelText: 'TEST',
-};
-
-export const ButtonFullWidth = Template.bind({});
-ButtonFullWidth.args = {
   fullWidth: true,
   labelText: 'TEST',
 };
