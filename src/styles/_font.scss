@@ -40,6 +40,13 @@
   line-height: 18px;
 }
 
+@mixin toast {
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+}
+
 @mixin kakao {
   color: #47292b;
   background-color: $yellow;
