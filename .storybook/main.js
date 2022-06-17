@@ -18,6 +18,22 @@ module.exports = {
       "~": path.resolve(__dirname, "../src"),
     };
 
+    config.module.rules.push({
+      test: /\.scss$/,
+      use: [
+        {
+          loader: "sass-loader",
+          options: {
+            additionalData: `
+              @import "./src/styles/_color.scss";
+              @import "./src/styles/_font.scss";
+            `,
+          },
+        },
+      ],
+      include: path.resolve(__dirname, "../"),
+    });
+
     return config;
   },
   staticDirs: ["../public"],

@@ -1,0 +1,52 @@
+@mixin title01 {
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 38px;
+}
+
+@mixin title02 {
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+}
+
+@mixin sub-title {
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+@mixin body01 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+@mixin body02 {
+  font-size: 14px;
+  line-height: 22px;
+}
+
+@mixin body03 {
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+@mixin button {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+@mixin toast {
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+@mixin kakao {
+  color: #47292b;
+  background-color: $yellow;
+}

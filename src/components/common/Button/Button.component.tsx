@@ -5,6 +5,7 @@ import React, {
   useRef,
 } from 'react';
 import cn from 'classnames';
+import Image from 'next/image';
 import styles from './Button.module.scss';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -12,6 +13,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
   fullWidth?: boolean;
   labelText?: string;
+  isKakao?: boolean;
 }
 
 export interface ParentRef {
@@ -25,6 +27,7 @@ const Button = (
     disabled = false,
     fullWidth = false,
     labelText = '',
+    isKakao = false,
     ...restProps
   }: ButtonProps,
   parentRef: React.Ref<ParentRef>,
@@ -41,10 +44,21 @@ const Button = (
     <button
       type="button"
       ref={childRef}
-      className={cn(className, styles.button, { [styles['full-width']]: fullWidth })}
+      className={cn(className, styles.button, {
+        [styles['full-width']]: fullWidth,
+        [styles.kakao]: isKakao,
+      })}
       disabled={disabled}
       {...restProps}
     >
+      {isKakao && (
+        <>
+          <span className={styles.icon}>
+            <Image src="kakao.svg" alt="kakao" width="21" height="19" />
+          </span>
+          카카오로 시작하기
+        </>
+      )}
       <span>{labelText ? <>{labelText}</> : children}</span>
     </button>
   );
