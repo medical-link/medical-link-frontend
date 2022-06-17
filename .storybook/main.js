@@ -25,7 +25,8 @@ module.exports = {
           loader: "sass-loader",
           options: {
             additionalData: `
-              @import "./src/styles/main.scss";
+              @import "./src/styles/_color.scss";
+              @import "./src/styles/_font.scss";
             `,
           },
         },

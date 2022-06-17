@@ -12,8 +12,8 @@
 
 @mixin sub-title {
   font-weight: normal;
-  font-size: 24px;
-  line-height: 28px;
+  font-size: 20px;
+  line-height: 24px;
 }
 
 @mixin body01 {
@@ -23,9 +23,8 @@
 }
 
 @mixin body02 {
-  font-weight: 600;
   font-size: 14px;
-  line-height: 18px;
+  line-height: 22px;
 }
 
 @mixin body03 {
@@ -50,9 +49,4 @@
 @mixin kakao {
   color: #47292b;
   background-color: $yellow;
-}
-
-* {
-  /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
-  font-family: Pretendard;
 }
