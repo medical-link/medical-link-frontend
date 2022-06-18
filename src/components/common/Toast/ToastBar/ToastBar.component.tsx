@@ -1,5 +1,6 @@
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import Image from 'next/image';
+import Close from 'public/close.svg';
 import styles from './ToastBar.module.scss';
 import { ToastItem } from '../Toast.control';
 
@@ -43,13 +44,7 @@ const ToastBar = ({ toastItem, onRemoveToastItem }: ToastBarProps) => {
       className={styles['toast-bar']}
     >
       <div className={styles.icon}>
-        <Image
-          onClick={() => onRemoveToastItem(toastItem.id)}
-          src="/close.svg"
-          width={24}
-          height={21}
-          alt="close"
-        />
+        <Close onClick={() => onRemoveToastItem(toastItem.id)} />
       </div>
       {toastItem.message}
     </div>

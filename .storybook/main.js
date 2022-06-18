@@ -16,7 +16,21 @@ module.exports = {
   webpackFinal: async (config) => {
     config.resolve.alias = {
       "~": path.resolve(__dirname, "../src"),
+      public: path.resolve(__dirname, "../public"),
     };
+    const fileLoaderRule = config.module.rules.find((rule) =>
+      rule.test.test(".svg")
+    );
+    fileLoaderRule.exclude = /\.svg$/;
+
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: [
+        {
+          loader: "@svgr/webpack",
+        },
+      ],
+    });
 
     config.module.rules.push({
       test: /\.scss$/,

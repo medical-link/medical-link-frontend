@@ -5,7 +5,7 @@ import React, {
   useRef,
 } from 'react';
 import cn from 'classnames';
-import Image from 'next/image';
+import Kakao from 'public/kakao.svg';
 import styles from './Button.module.scss';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -54,7 +54,7 @@ const Button = (
       {isKakao && (
         <>
           <span className={styles.icon}>
-            <Image src="kakao.svg" alt="kakao" width="21" height="19" />
+            <Kakao />
           </span>
           카카오로 시작하기
         </>
