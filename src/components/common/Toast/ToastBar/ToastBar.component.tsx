@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import Image from 'next/image';
 import Close from 'public/close.svg';
 import styles from './ToastBar.module.scss';
 import { ToastItem } from '../Toast.control';
@@ -12,16 +11,20 @@ interface ToastBarProps {
 const ToastBar = ({ toastItem, onRemoveToastItem }: ToastBarProps) => {
   const toastBarElement = useRef<HTMLDivElement>(null);
 
-  const setOpacity = (opacity: number, duration: number) => {
-    if (toastBarElement.current) {
-      toastBarElement.current.style.transition = `${duration}ms`;
-      toastBarElement.current.style.opacity = `${opacity}`;
-      toastBarElement.current.style.transform = 'translate(0%, -15px)';
-    }
-  };
-
   useEffect(() => {
-    setOpacity(1, 500);
+    const setOpacity = (opacity: number, duration: number) => {
+      if (toastBarElement.current) {
+        toastBarElement.current.style.transition = `all ${duration}ms`;
+        toastBarElement.current.style.opacity = `${opacity}`;
+        if (opacity === 0) {
+          toastBarElement.current.style.transform = 'translate(0%, 20px)';
+          return;
+        }
+        toastBarElement.current.style.transform = 'translate(0%, -20px)';
+      }
+    };
+
+    setTimeout(() => setOpacity(1, 500), 0);
 
     const timeoutForRemove = setTimeout(() => {
       onRemoveToastItem(toastItem.id);

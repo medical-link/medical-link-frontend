@@ -1,0 +1,54 @@
+.banner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+
+  .slider-container {
+    display: flex;
+    width: 100%;
+
+    img {
+      width: 100%;
+      height: fit-content;
+    }
+  }
+
+  .dot-container {
+    position: absolute;
+    bottom: 15px;
+    left: calc(50% - 22px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 44px;
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background-color: $grey02;
+      border-radius: 50%;
+
+      &.active {
+        background-color: $blue;
+      }
+    }
+  }
+
+  button {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+  }
+
+  button.prev {
+    left: 0;
+  }
+
+  button.next {
+    right: 0;
+  }
+}

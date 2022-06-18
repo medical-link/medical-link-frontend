@@ -1,0 +1,17 @@
+.tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  height: 31px;
+  padding: 1px 15px 0;
+  color: white;
+  background-color: $grey04;
+  border-radius: 5px;
+
+  @include body01;
+
+  &.active {
+    background-color: $blue;
+  }
+}
