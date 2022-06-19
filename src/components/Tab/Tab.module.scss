@@ -1,0 +1,64 @@
+.tab {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+  background-color: white;
+  border-top: 1px solid $grey04;
+
+  .tab-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+
+    .tab-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 46px;
+      height: 100%;
+
+      button {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        height: 100%;
+        padding: 0;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+
+        span {
+          @include button;
+
+          color: $grey04;
+        }
+
+        .icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 24px;
+          height: 24px;
+          margin-bottom: 8px;
+        }
+
+        &.active {
+          span {
+            color: $blue;
+          }
+
+          .icon {
+            svg > path {
+              fill: $blue;
+            }
+          }
+        }
+      }
+    }
+  }
+}
