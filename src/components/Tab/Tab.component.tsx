@@ -33,20 +33,26 @@ const TAB_INFO = [
   { path: 'my-info', text: '내 정보', icon: <MyInfo /> },
 ];
 
-const Tab = ({ push, pathname }: NextRouter) => (
-  <div className={cn(styles.tab)}>
-    <div className={styles['tab-container']}>
-      {TAB_INFO.map(({ path, text, icon }) => (
-        <TabIcon
-          key={path}
-          text={text}
-          handleRoute={() => push(path)}
-          isActive={pathname.includes(path)}
-          icon={icon}
-        />
-      ))}
+const Tab = ({ push, pathname }: NextRouter) => {
+  if (pathname.includes('auth') || pathname.includes('detail')) {
+    return null;
+  }
+
+  return (
+    <div className={cn(styles.tab)}>
+      <div className={styles['tab-container']}>
+        {TAB_INFO.map(({ path, text, icon }) => (
+          <TabIcon
+            key={path}
+            text={text}
+            handleRoute={() => push(path)}
+            isActive={pathname.includes(path)}
+            icon={icon}
+          />
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default Tab;

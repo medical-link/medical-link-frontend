@@ -5,7 +5,7 @@ import { Button } from '~/components';
 const Home: NextPage = () => (
   <div>
     <Head>
-      <title>Test</title>
+      <title>Medical Link</title>
       <meta name="description" content="Test" />
       <link rel="icon" href="/favicon.ico" />
     </Head>
