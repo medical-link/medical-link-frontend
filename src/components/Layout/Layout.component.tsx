@@ -11,7 +11,7 @@ const Layout = ({ children }: LayoutProps) => {
   const router = useRouter();
 
   return (
-    <div className={styles.layout}>
+    <main className={styles.layout}>
       <section className={styles.landing}>
         Landing Area
       </section>
@@ -20,7 +20,7 @@ const Layout = ({ children }: LayoutProps) => {
         {children}
         <Tab {...router} />
       </section>
-    </div>
+    </main>
   );
 };
 
