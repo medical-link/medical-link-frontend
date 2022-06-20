@@ -34,7 +34,7 @@ const TAB_INFO = [
 ];
 
 const Tab = ({ push, pathname }: NextRouter) => {
-  if (pathname.includes('auth') || pathname.includes('detail')) {
+  if (pathname.includes('auth') || pathname.includes('detail') || pathname.includes('login')) {
     return null;
   }
 

@@ -1,21 +1,22 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { Button } from '~/components';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
-const Home: NextPage = () => (
-  <div>
+const HomePage: NextPage = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push('/login');
+  }, [router]);
+
+  return (
     <Head>
       <title>Medical Link</title>
       <meta name="description" content="Test" />
       <link rel="icon" href="/favicon.ico" />
     </Head>
+  );
+};
 
-    <main>
-      <Button>Main</Button>
-    </main>
-
-    <footer>Footer</footer>
-  </div>
-);
-
-export default Home;
+export default HomePage;
