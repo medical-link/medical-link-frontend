@@ -7,7 +7,7 @@ import {
 } from '~/components';
 import { authApiService, PostSignUpRequest, usersApiService } from '~/service';
 import { titleAtom, userDataAtom } from '~/store';
-import { delay } from '~/utils';
+import { handleDelay } from '~/utils';
 import styles from './SignUp.module.scss';
 
 const SignUpPage = () => {
@@ -30,7 +30,7 @@ const SignUpPage = () => {
   const onSubmit = handleSubmit(async (data) => {
     try {
       setIsLoading(true);
-      await delay(1000);
+      await handleDelay(1000);
       await usersApiService.postSignUp(data);
       router.push('/auth/check-info');
       setIsLoading(false);
