@@ -20,7 +20,11 @@ const parseCallBack = (url: string) => {
   return params;
 };
 
-const LoginPage: NextPage = () => {
+interface LoginPageProps {
+  currentUrl: string;
+}
+
+const LoginPage: NextPage<LoginPageProps> = ({ currentUrl }) => {
   const router = useRouter();
 
   useEffect(() => {
@@ -55,7 +59,7 @@ const LoginPage: NextPage = () => {
         </h2>
         <img src="/welcome.png" alt="welcome" />
         <Link
-          href={`https://kauth.kakao.com/oauth/authorize?client_id=d45843830a8fd527b90f3b52e18520bc&redirect_uri=${process.env.CURRENT_URL}%2flogin&response_type=code`}
+          href={`https://kauth.kakao.com/oauth/authorize?client_id=d45843830a8fd527b90f3b52e18520bc&redirect_uri=${currentUrl}%2flogin&response_type=code`}
           passHref
         >
           <Button isKakao fullWidth />
@@ -64,5 +68,13 @@ const LoginPage: NextPage = () => {
     </div>
   );
 };
+
+export async function getStaticProps() {
+  return {
+    props: {
+      currentUrl: process.env.CURRENT_URL,
+    },
+  };
+}
 
 export default LoginPage;
