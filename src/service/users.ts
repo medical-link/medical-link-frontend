@@ -1,9 +1,5 @@
-import { ACCESS_TOKEN, USER_ID } from '~/constants';
-import {
-  UserIdResponse,
-  UserDataResponse,
-  PostSignUpRequest,
-} from '~/service';
+import { ACCESS_TOKEN } from '~/constants';
+import { UserIdResponse, UserDataResponse, PostSignUpRequest } from '~/service';
 import BaseApiService from './base';
 
 class UsersApiService extends BaseApiService {
@@ -35,7 +31,7 @@ class UsersApiService extends BaseApiService {
 
   public postLogout(): Promise<unknown> {
     return this.http
-      .post('/logout', {
+      .post('/logout', null, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
         },
@@ -46,7 +42,7 @@ class UsersApiService extends BaseApiService {
 
   public postMyData(): Promise<unknown> {
     return this.http
-      .post('/mydata', {
+      .post('/mydata', null, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
         },
@@ -57,14 +53,19 @@ class UsersApiService extends BaseApiService {
 
   public postSignUp({ age, name, sex }: PostSignUpRequest): Promise<unknown> {
     return this.http
-      .post('/mydata', {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
+      .post(
+        '/signup',
+        {
+          age,
+          name,
+          sex,
         },
-        data: {
-          age, name, sex,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
+          },
         },
-      })
+      )
       .then(BaseApiService.handleResponse)
       .catch(BaseApiService.handleError);
   }
