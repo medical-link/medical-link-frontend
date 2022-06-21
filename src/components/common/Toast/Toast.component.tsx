@@ -7,7 +7,12 @@ import styles from './Toast.module.scss';
 // eslint-disable-next-line import/no-mutable-exports
 export let toast: Toaster = new Toaster(null);
 
-const Toast = () => {
+export interface ToastProps {
+  height?: number;
+  delay?: number;
+}
+
+const Toast = ({ height = 70, delay = 4000 }: ToastProps) => {
   const [toastItems, setToastItems] = useState<ToastItem[]>([]);
 
   useEffect(() => {
@@ -20,17 +25,17 @@ const Toast = () => {
   }, []);
 
   return (
-    <Portal>
-      <div className={styles.toast}>
-        {toastItems.map((toastItem) => (
-          <ToastBar
-            toastItem={toastItem}
-            onRemoveToastItem={removeToastItem}
-            key={toastItem.id}
-          />
-        ))}
-      </div>
-    </Portal>
+    <div className={styles.toast}>
+      {toastItems.map((toastItem) => (
+        <ToastBar
+          toastItem={toastItem}
+          onRemoveToastItem={removeToastItem}
+          key={toastItem.id}
+          height={height}
+          delay={delay}
+        />
+      ))}
+    </div>
   );
 };
 

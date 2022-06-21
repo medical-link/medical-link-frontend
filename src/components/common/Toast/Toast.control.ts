@@ -6,11 +6,11 @@ export type ToastType = 'success' | 'error';
 export type ToastRole = Extract<AriaRole, 'alert' | 'status'>;
 
 export interface ToastItem {
-    id: string;
-    type: ToastType;
-    message: string;
-    role: ToastRole;
-  }
+  id: string;
+  type: ToastType;
+  message: string;
+  role: ToastRole;
+}
 
 type SetToastItems = React.Dispatch<SetStateAction<ToastItem[]>>;
 
@@ -40,11 +40,15 @@ class Toaster {
     this.setToastItems((state: ToastItem[]) => state.filter(({ id }) => id !== toastId));
   }
 
+  removeToastItemAll() {
+    this.setToastItems([]);
+  }
+
   success(message: ToastItem['message'], role: ToastRole = 'status'): void {
     this.addToastItem({ type: 'success', message, role });
   }
 
-  info(message: ToastItem['message'], role: ToastRole = 'status'): void {
+  error(message: ToastItem['message'], role: ToastRole = 'status'): void {
     this.addToastItem({ type: 'error', message, role });
   }
 }

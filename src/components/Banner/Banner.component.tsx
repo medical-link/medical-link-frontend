@@ -47,7 +47,7 @@ const Banner = () => {
         {Array.from(Array(3).keys()).map((item) => (
           <img
             key={item}
-            src={`banner-${item + 1}.png`}
+            src={`/banner-${item + 1}.png`}
             alt={`banner-${item + 1}.png`}
           />
         ))}
@@ -63,13 +63,11 @@ const Banner = () => {
       <button
         type="button"
         className={styles.prev}
-        onTouchStart={prevSlide}
         onMouseDown={prevSlide}
       />
       <button
         type="button"
         className={styles.next}
-        onTouchStart={nextSlide}
         onMouseDown={nextSlide}
       />
     </div>

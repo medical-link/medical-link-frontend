@@ -1,14 +1,19 @@
 import { useEffect, useRef } from 'react';
-import Close from 'public/close.svg';
+import Check from 'public/close.svg';
+import Error from 'public/error.svg';
 import styles from './ToastBar.module.scss';
 import { ToastItem } from '../Toast.control';
 
 interface ToastBarProps {
   toastItem: ToastItem;
   onRemoveToastItem: (toastId: string) => void;
+  height: number;
+  delay: number;
 }
 
-const ToastBar = ({ toastItem, onRemoveToastItem }: ToastBarProps) => {
+const ToastBar = ({
+  toastItem, onRemoveToastItem, height, delay,
+}: ToastBarProps) => {
   const toastBarElement = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -17,10 +22,10 @@ const ToastBar = ({ toastItem, onRemoveToastItem }: ToastBarProps) => {
         toastBarElement.current.style.transition = `all ${duration}ms`;
         toastBarElement.current.style.opacity = `${opacity}`;
         if (opacity === 0) {
-          toastBarElement.current.style.transform = 'translate(0%, 20px)';
+          toastBarElement.current.style.transform = `translate(0%, ${height}px)`;
           return;
         }
-        toastBarElement.current.style.transform = 'translate(0%, -20px)';
+        toastBarElement.current.style.transform = `translate(0%, -${height}px)`;
       }
     };
 
@@ -28,17 +33,17 @@ const ToastBar = ({ toastItem, onRemoveToastItem }: ToastBarProps) => {
 
     const timeoutForRemove = setTimeout(() => {
       onRemoveToastItem(toastItem.id);
-    }, 4000);
+    }, delay);
 
     const timeoutForOpacity = setTimeout(() => {
       setOpacity(0, 500);
-    }, 3500);
+    }, delay - 500);
 
     return () => {
       clearTimeout(timeoutForRemove);
       clearTimeout(timeoutForOpacity);
     };
-  }, [toastItem, onRemoveToastItem]);
+  }, [toastItem, onRemoveToastItem, height, delay]);
 
   return (
     <div
@@ -47,7 +52,10 @@ const ToastBar = ({ toastItem, onRemoveToastItem }: ToastBarProps) => {
       className={styles['toast-bar']}
     >
       <div className={styles.icon}>
-        <Close onClick={() => onRemoveToastItem(toastItem.id)} />
+        {{
+          success: <Check onClick={() => onRemoveToastItem(toastItem.id)} />,
+          error: <Error onClick={() => onRemoveToastItem(toastItem.id)} />,
+        }[toastItem.type]}
       </div>
       {toastItem.message}
     </div>
