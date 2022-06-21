@@ -1,0 +1,41 @@
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @keyframes shine {
+    to {
+      background-position: right -40px top 0;
+    }
+  }
+
+  @mixin skeleton {
+    background-color: $grey06;
+    background-image:
+      linear-gradient(
+        90deg,
+        rgba(#fff, 0),
+        rgba(#fff, 0.5),
+        rgba(#fff, 0)
+      );
+    background-repeat: no-repeat;
+    background-position: left -100px top 0;
+    background-size: 100px 100%;
+    animation: shine 1s ease infinite;
+  }
+
+  .top {
+    height: 72px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+
+    @include skeleton;
+  }
+
+  .bottom {
+    height: 249px;
+    border-radius: 10px;
+
+    @include skeleton;
+  }
+}

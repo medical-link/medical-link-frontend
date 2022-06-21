@@ -1,0 +1,51 @@
+.input {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @include body03;
+
+  & .input-wrapper {
+    position: relative;
+    width: 100%;
+
+    & > input {
+      width: calc(100% - 30px);
+      padding: 11px 15px;
+      color: $grey01;
+      background: none;
+      background-color: white;
+      border: 1px solid $grey04;
+      border-radius: 4px;
+
+      &::placeholder {
+        color: $grey04;
+      }
+
+      &:hover {
+        border-color: $blue;
+      }
+
+      &:focus {
+        outline-color: $blue;
+      }
+
+      &.error-outline {
+        border-color: $error;
+        outline-color: $error;
+      }
+
+      &:disabled {
+        border-color: gray;
+        outline: none;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  & .error {
+    margin-top: 10px;
+    color: $error;
+  }
+}

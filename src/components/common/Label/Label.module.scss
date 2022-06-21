@@ -1,0 +1,9 @@
+.label {
+  margin-bottom: 10px;
+
+  & > span {
+    color: $grey03;
+
+    @include body03;
+  }
+}

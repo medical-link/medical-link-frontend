@@ -1,0 +1,15 @@
+.loading {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 30px);
+  height: calc(100vh - 107px);
+  padding: 80px 15px 25px;
+
+  .info {
+    margin-top: 50px;
+    color: $grey01;
+    text-align: center;
+
+    @include title02;
+  }
+}

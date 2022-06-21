@@ -11,8 +11,11 @@ export default {
 export const Template = () => (
   <div>
     <Toast />
-    <button type="button" onClick={() => toast.success('에러 발생!')}>
+    <button type="button" onClick={() => toast.success('성공!')}>
       Success
+    </button>
+    <button type="button" onClick={() => toast.error('에러 발생!')}>
+      error
     </button>
   </div>
 );

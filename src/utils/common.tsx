@@ -4,3 +4,6 @@ export const uuid = () => 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g
   const v = c === 'x' ? r : (r & 0x3) | 0x8;
   return v.toString(16);
 });
+
+// eslint-disable-next-line no-promise-executor-return
+export const delay = (delay: number) => new Promise((resolve) => setTimeout(resolve, delay));

@@ -22,21 +22,10 @@ class AuthApiService extends BaseApiService {
 
   public postAuthVerify(): Promise<AuthVerifyResponse> {
     return this.http
-      .get('/verify', {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
-        },
+      .post('/verify', null, {
         params: {
           userId: localStorage.getItem(USER_ID),
         },
-      })
-      .then(BaseApiService.handleResponse)
-      .catch(BaseApiService.handleError);
-  }
-
-  public getUserData(): Promise<UserDataResponse> {
-    return this.http
-      .get('/users/info', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
         },

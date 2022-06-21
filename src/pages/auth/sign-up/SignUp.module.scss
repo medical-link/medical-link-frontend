@@ -1,0 +1,31 @@
+.sign-up {
+  position: relative;
+  width: calc(100% - 30px);
+  height: calc(100vh - 52px);
+  padding: 25px 15px;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: calc(100% - 55px);
+    margin-top: 55px;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      height: fit-content;
+
+      & > * {
+        margin-bottom: 25px;
+      }
+    }
+
+    button {
+      margin: 15px 20px;
+    }
+  }
+}
