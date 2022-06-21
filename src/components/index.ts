@@ -4,3 +4,4 @@ export { default as Tab } from './Tab/Tab.component';
 export { default as Layout } from './Layout/Layout.component';
 export { default as Banner } from './Banner/Banner.component';
 export { default as Header } from './Header/Header.component';
+export { default as Accordion } from './Accordion/Accordion.component';
