@@ -59,7 +59,9 @@ const LoginPage: NextPage<LoginPageProps> = ({ currentUrl }) => {
         </h2>
         <img src="/welcome.png" alt="welcome" />
         <Link
-          href={`https://kauth.kakao.com/oauth/authorize?client_id=d45843830a8fd527b90f3b52e18520bc&redirect_uri=${currentUrl}%2flogin&response_type=code`}
+          href={`https://kauth.kakao.com/oauth/authorize?client_id=d45843830a8fd527b90f3b52e18520bc&redirect_uri=${encodeURIComponent(
+            currentUrl,
+          )}%2flogin&response_type=code`}
           passHref
         >
           <Button isKakao fullWidth />

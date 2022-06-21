@@ -34,7 +34,7 @@
     height: 0;
     padding: 0 20px;
     overflow: hidden;
-    border: 1px solid $grey05;
+    border: 1px solid transparent;
     border-radius: 10px;
     transition: all 0.35s ease;
 
@@ -43,6 +43,7 @@
     &.expand {
       height: fit-content;
       padding: 25px 20px;
+      border: 1px solid $grey05;
     }
 
     .table {
