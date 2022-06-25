@@ -7,4 +7,5 @@ export const userDataAtom = atom<User>({
   sex: '남',
   userId: '',
   kakaoId: '',
+  illnessList: [],
 });
