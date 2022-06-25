@@ -56,7 +56,11 @@ const ReportDetailPage = () => {
           })}
         </div>
       </div>
-      <DetailTab id={research?.id} like={research?.like} detailURL={research?.detailURL} />
+      <DetailTab
+        id={research?.id}
+        like={research?.like}
+        detailURL={research?.detailURL}
+      />
     </>
   );
 };

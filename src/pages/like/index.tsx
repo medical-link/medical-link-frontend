@@ -1,9 +1,8 @@
-import { useAtomValue, useSetAtom } from 'jotai';
+import { useSetAtom } from 'jotai';
 import { debounce } from 'lodash';
 import { useEffect, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import {
-  Filter,
   NoData,
   ResearchCard,
   Spinner,
@@ -15,17 +14,15 @@ import {
   ResearchesRequestData,
   ResearchesResponseData,
 } from '~/service';
-import { titleAtom, userDataAtom } from '~/store';
-import ArrowDown from 'public/arrow-down.svg';
-import { useRouter } from 'next/router';
-import styles from './Report.module.scss';
+import { titleAtom } from '~/store';
+import styles from './Like.module.scss';
 
-const ReportPage = () => {
-  const router = useRouter();
-  const { name, age, sex } = useAtomValue(userDataAtom);
+const LikePage = () => {
   const [target, setTarget] = useState({} as any);
   const [loadingVisible, setLoadingVisible] = useState(true);
   const [researches, setResearches] = useState<ResearchesResponseData>([]);
+  const [fireLikeEvent, setFireLikeEvent] = useState(false);
+  const handleToggleFireEvent = () => setFireLikeEvent((prev) => !prev);
 
   const setTitle = useSetAtom(titleAtom);
   const methods = useForm<ResearchesRequestData>({
@@ -41,7 +38,7 @@ const ReportPage = () => {
   watch();
 
   useEffect(() => {
-    setTitle('의료정보');
+    setTitle('좋아요');
     return () => setTitle('');
   }, []);
 
@@ -55,7 +52,7 @@ const ReportPage = () => {
             const page = getValues('page');
             const data = await researchesApiService.getResearches({
               page: page + 1,
-              category,
+              category: 'likes',
               value,
               size: 10,
             });
@@ -78,12 +75,13 @@ const ReportPage = () => {
   useEffect(() => {
     setResearches([]);
     setLoadingVisible(true);
+
     (async () => {
       try {
         const page = getValues('page');
         const data = await researchesApiService.getResearches({
           page,
-          category,
+          category: 'likes',
           value,
           size: 10,
         });
@@ -96,38 +94,23 @@ const ReportPage = () => {
         setLoadingVisible(false);
       }
     })();
-  }, [category, value]);
+  }, [fireLikeEvent]);
 
   if (researches?.length === 0 && loadingVisible) return <SpinnerView />;
+  if (researches?.length === 0) {
+    return <NoData text="좋아요 된 임상시험 정보가 없어요!" />;
+  }
 
   return (
     <FormProvider {...methods}>
-      {researches?.length === 0 && (
-        <div className={styles['no-data']}>
-          <NoData
-            text="일치하는 정보가 없어요!"
-            text2="다른 조건을 적용해 주세요"
-          />
-        </div>
-      )}
-      <div className={styles.report}>
-        {name && (
-          <button
-            type="button"
-            className={styles.profile}
-            onClick={() => router.push('/my-info/health-check')}
-          >
-            <div>
-              <span>{name}</span>
-              <strong>{`${age}, ${sex}`}</strong>
-            </div>
-            <ArrowDown />
-          </button>
-        )}
-        <Filter />
+      <div className={styles.like}>
         <div className={styles['card-area']}>
           {researches.map((each) => (
-            <ResearchCard key={each.id} {...each} />
+            <ResearchCard
+              key={each.id}
+              {...each}
+              handleToggleFireEvent={handleToggleFireEvent}
+            />
           ))}
           {loadingVisible && (
             <Spinner ref={setTarget} isActive={researches.length >= 10} />
@@ -138,4 +121,4 @@ const ReportPage = () => {
   );
 };
 
-export default ReportPage;
+export default LikePage;
