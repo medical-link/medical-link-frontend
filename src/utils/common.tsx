@@ -7,3 +7,8 @@ export const uuid = () => 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g
 
 // eslint-disable-next-line no-promise-executor-return
 export const handleDelay = (delay: number) => new Promise((resolve) => setTimeout(resolve, delay));
+
+export const setVhForMobile = () => {
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+};
