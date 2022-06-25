@@ -11,7 +11,7 @@
     width: 100%;
     max-width: 500px;
     height: 100%;
-    margin-top: 90px;
+    margin-top: 180px;
 
     @media (max-width: 1000px) {
       display: none;
@@ -21,16 +21,21 @@
   .app {
     position: relative;
     left: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     max-width: 500px;
-    min-height: calc(100vh - 2px);
+    min-height: calc(var(--vh, 1vh) * 100 - 126px);
+    padding: 56px 0 70px;
     background-color: white;
-    border: 1px solid $grey04;
+    border-right: 1px solid $grey04;
+    border-left: 1px solid $grey04;
 
     @media (max-width: 1000px) {
       left: unset;
       max-width: 1000px;
-      margin: auto;
+      border: none;
     }
   }
 }

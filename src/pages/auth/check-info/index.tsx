@@ -28,7 +28,6 @@ const CheckInfoPage = () => {
       <Button
         type="submit"
         labelText="본인 인증하고 조회하기"
-        fullWidth
         onClick={() => router.push('/auth/check-info/loading')}
       />
     </div>

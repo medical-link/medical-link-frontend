@@ -2,9 +2,9 @@ import { useAtom } from 'jotai';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { ReactNode, useEffect } from 'react';
-import { Header, Tab } from '~/components';
+import { Header, MyPageTab, Tab } from '~/components';
 import { ACCESS_TOKEN, USER_ID } from '~/constants';
-import { authApiService, usersApiService } from '~/service';
+import { usersApiService } from '~/service';
 import { userDataAtom } from '~/store';
 import styles from './Layout.module.scss';
 
@@ -18,17 +18,17 @@ const Layout = ({ children }: LayoutProps) => {
 
   useEffect(() => {
     (async () => {
-      const isTokenExist = localStorage.getItem(ACCESS_TOKEN);
-      const isUserIdExist = localStorage.getItem(USER_ID);
-
-      if (isTokenExist && isUserIdExist && !userData.userId) {
-        try {
-          await authApiService.postAuthVerify();
+      try {
+        if (!userData.userId) {
           const data = await usersApiService.getUserData();
           await setUserData(data);
-        } catch {
+        }
+      } catch {
+        if (!router.pathname.includes('sign-up')) {
           localStorage.removeItem(ACCESS_TOKEN);
-          localStorage.removeItem(ACCESS_TOKEN);
+          localStorage.removeItem(USER_ID);
+          router.push('/login');
+        } else if (!localStorage.getItem(ACCESS_TOKEN)) {
           router.push('/login');
         }
       }
@@ -42,6 +42,7 @@ const Layout = ({ children }: LayoutProps) => {
       </section>
       <section className={styles.app}>
         <Header {...router} />
+        <MyPageTab />
         {children}
         <Tab {...router} />
       </section>

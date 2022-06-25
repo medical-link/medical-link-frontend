@@ -1,13 +1,15 @@
 .header {
-  position: absolute;
+  position: fixed;
   top: 0;
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
+  max-width: 500px;
   height: 55px;
   background-color: white;
-  border-bottom: 1px solid $grey06;
+  border-bottom: 1px solid $grey04;
 
   svg {
     position: absolute;
@@ -16,6 +18,25 @@
   }
 
   h1 {
+    max-width: 80%;
+
     @include sub-title;
+    @include ellipsis;
+  }
+
+  .logout {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    color: transparent;
+    background-color: transparent;
+    border: none;
+  }
+
+  @media (max-width: 1000px) {
+    left: unset;
+    max-width: 1000px;
+    margin: auto;
   }
 }

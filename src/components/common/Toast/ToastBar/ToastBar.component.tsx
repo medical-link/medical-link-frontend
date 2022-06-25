@@ -12,24 +12,27 @@ interface ToastBarProps {
 }
 
 const ToastBar = ({
-  toastItem, onRemoveToastItem, height, delay,
+  toastItem,
+  onRemoveToastItem,
+  height,
+  delay,
 }: ToastBarProps) => {
   const toastBarElement = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const setOpacity = (opacity: number, duration: number) => {
-      if (toastBarElement.current) {
+    const setOpacity = async (opacity: number, duration: number) => {
+      if (toastBarElement.current && toastBarElement.current.style) {
         toastBarElement.current.style.transition = `all ${duration}ms`;
-        toastBarElement.current.style.opacity = `${opacity}`;
+
         if (opacity === 0) {
           toastBarElement.current.style.transform = `translate(0%, ${height}px)`;
-          return;
+        } else {
+          toastBarElement.current.style.transform = `translate(0%, -${height}px)`;
         }
-        toastBarElement.current.style.transform = `translate(0%, -${height}px)`;
+        toastBarElement.current.style.opacity = `${opacity}`;
       }
     };
-
-    setTimeout(() => setOpacity(1, 500), 0);
+    window.requestAnimationFrame(() => setOpacity(1, 500));
 
     const timeoutForRemove = setTimeout(() => {
       onRemoveToastItem(toastItem.id);
@@ -52,10 +55,12 @@ const ToastBar = ({
       className={styles['toast-bar']}
     >
       <div className={styles.icon}>
-        {{
-          success: <Check onClick={() => onRemoveToastItem(toastItem.id)} />,
-          error: <Error onClick={() => onRemoveToastItem(toastItem.id)} />,
-        }[toastItem.type]}
+        {
+          {
+            success: <Check onClick={() => onRemoveToastItem(toastItem.id)} />,
+            error: <Error onClick={() => onRemoveToastItem(toastItem.id)} />,
+          }[toastItem.type]
+        }
       </div>
       {toastItem.message}
     </div>

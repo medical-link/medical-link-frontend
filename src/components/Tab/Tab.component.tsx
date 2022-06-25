@@ -30,11 +30,11 @@ const TabIcon = ({
 const TAB_INFO = [
   { path: '/report', text: '리포트', icon: <Report /> },
   { path: '/like', text: '좋아요', icon: <Like /> },
-  { path: '/my-info/medicine', text: '내 정보', icon: <MyInfo /> },
+  { path: '/my-info', text: '내 정보', icon: <MyInfo /> },
 ];
 
 const Tab = ({ push, pathname }: NextRouter) => {
-  if (pathname.includes('auth') || pathname.includes('detail') || pathname.includes('login')) {
+  if (pathname && (pathname.includes('auth') || pathname.includes('detail') || pathname.includes('login'))) {
     return null;
   }
 
