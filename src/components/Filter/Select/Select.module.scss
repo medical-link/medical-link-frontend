@@ -1,0 +1,77 @@
+.select {
+  position: relative;
+  width: 100%;
+
+  & > button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    max-width: 80px;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+
+    @include button;
+
+    span {
+      margin-right: 10px;
+      color: $grey02;
+    }
+
+    svg.expand {
+      transform: rotate(180deg);
+      transition: all 0.35s;
+    }
+
+    svg.close {
+      transform: rotate(0deg);
+      transition: all 0.35s;
+    }
+  }
+
+  .content {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    width: calc(105px - 32.82px);
+    height: 0;
+    padding: 0 16.41px;
+    overflow: hidden;
+    color: $grey02;
+    background-color: white;
+    border: 1px solid transparent;
+    filter: none;
+    transition: all 0.35s ease;
+
+    @include body01;
+
+    &.expand {
+      z-index: 15;
+      height: fit-content;
+      padding: 12px 16.41px;
+      border: 1px solid $grey05;
+      filter: drop-shadow(0 2px 2px rgb(0 0 0 / 5%));
+    }
+
+    .box {
+      cursor: pointer;
+
+      @include gap(24px);
+
+      .item {
+        @include ellipsis;
+      }
+    }
+
+    .tag-container {
+      display: flex;
+      margin-top: 15px;
+
+      span {
+        margin-right: 10px;
+      }
+    }
+  }
+}

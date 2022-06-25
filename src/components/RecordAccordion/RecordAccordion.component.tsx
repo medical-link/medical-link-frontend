@@ -1,14 +1,15 @@
 import { useRef, useState } from 'react';
 import cn from 'classnames';
 import ArrowDown from 'public/arrow-down.svg';
-import { MedicalTest } from '~/service';
-import styles from './Accordion.module.scss';
+import { MedicalRecord } from '~/service';
+import styles from './RecordAccordion.module.scss';
 
-const Accordion = ({
-  testDate,
+const RecordAccordion = ({
+  recordDate,
+  diagnosisType,
   facilityName,
-  medicalStatusList,
-}: MedicalTest) => {
+  medicineInfoList,
+}: MedicalRecord) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -24,13 +25,13 @@ const Accordion = ({
   };
 
   return (
-    <div className={styles.accordion}>
+    <div className={styles['record-accordion']}>
       <button type="button" onClick={handleClickButton}>
         <div>
-          {testDate && (
-            <span>{testDate.split('T')[0].split('-').join('.')}</span>
+          {recordDate && (
+            <span>{recordDate.split('T')[0].split('-').join('.')}</span>
           )}
-          {facilityName && <strong>{facilityName}</strong>}
+          {diagnosisType && <strong>{diagnosisType}</strong>}
         </div>
         <ArrowDown
           className={cn({
@@ -44,22 +45,21 @@ const Accordion = ({
         ref={panelRef}
       >
         <div ref={contentRef}>
-          {medicalStatusList && (
-            <table className={styles.table}>
-              <tbody>
-                {medicalStatusList.map(({ id, testType, value }) => (
-                  <tr key={id}>
-                    <td>{testType}</td>
-                    <td>{value}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          )}
+          <div className={styles.title}>병원정보</div>
+          <div>{facilityName}</div>
+          <div className={styles.title}>처방조제</div>
+          <ul>
+            {medicineInfoList?.map(({ id, medicineType, name }) => (
+              <li key={id}>
+                <span className={styles.strong}>{medicineType}</span>
+                {name}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>
   );
 };
 
-export default Accordion;
+export default RecordAccordion;

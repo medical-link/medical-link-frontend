@@ -1,4 +1,4 @@
-.accordion {
+.record-accordion {
   width: 100%;
 
   & > button {
@@ -39,6 +39,7 @@
     height: 0;
     padding: 0 20px;
     overflow: hidden;
+    color: $grey03;
     border: 1px solid transparent;
     border-radius: 10px;
     transition: all 0.35s ease;
@@ -51,36 +52,24 @@
       border: 1px solid $grey05;
     }
 
-    .table {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      border-spacing: 5px 6px;
+    .title {
+      color: $grey01;
+    }
 
-      & > tbody {
-        width: 100%;
+    & > div {
+      & > ul {
+        margin: 0;
+        padding: 0 0 0 15px;
 
-        & > tr {
-          display: flex;
-          width: 100%;
-
-          td:first-child {
-            width: 40%;
-            margin-right: 10px;
-            color: $grey01;
-            vertical-align: top;
-
-            @include ellipsis;
-          }
-
-          td:last-child {
-            width: 60%;
-            color: $grey03;
-
-            @include ellipsis;
-          }
-        }
+        @include gap(10px);
       }
+
+      @include gap(10px);
+    }
+
+    .strong {
+      margin-right: 10px;
+      color: $grey02;
     }
 
     .tag-container {
