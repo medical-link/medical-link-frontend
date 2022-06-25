@@ -2,10 +2,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: calc(100% - 30px);
-  height: calc(100vh - 107px);
-  padding: 80px 15px 25px;
+  height: calc(100% - 50px);
+  padding: 25px 15px;
 
   .container {
     & > div:first-child {
@@ -19,5 +19,11 @@
 
       @include body01;
     }
+  }
+
+  & > button {
+    position: absolute;
+    bottom: 25px;
+    width: calc(100% - 30px);
   }
 }

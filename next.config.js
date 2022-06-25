@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   sassOptions: {
     additionalData:
       '@import "./src/styles/_color.scss"; @import "./src/styles/_font.scss";',

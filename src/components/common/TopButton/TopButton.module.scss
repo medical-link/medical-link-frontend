@@ -1,0 +1,33 @@
+.top-button {
+  position: fixed;
+  bottom: 95px;
+  left: 50%;
+  z-index: 10;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  max-width: 500px;
+  height: 0;
+
+  button {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    z-index: 10;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    svg {
+      background-color: #707070;
+      border-radius: 50%;
+    }
+  }
+
+  @media (max-width: 1000px) {
+    left: unset;
+    max-width: 1000px;
+    margin: auto;
+  }
+}

@@ -1,7 +1,9 @@
 .tab {
-  position: absolute;
+  position: fixed;
   bottom: 0;
+  z-index: 20;
   width: 100%;
+  max-width: 500px;
   height: 70px;
   background-color: white;
   border-top: 1px solid $grey04;
@@ -60,5 +62,11 @@
         }
       }
     }
+  }
+
+  @media (max-width: 1000px) {
+    left: unset;
+    max-width: 1000px;
+    margin: auto;
   }
 }

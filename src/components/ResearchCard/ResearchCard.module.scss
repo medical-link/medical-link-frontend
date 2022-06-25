@@ -1,0 +1,72 @@
+.research-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: calc(100% - 30px);
+  padding: 25px 15px;
+  background-color: white;
+  border: 1px solid $grey05;
+  border-radius: 10px;
+
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+
+    .title-left {
+      display: flex;
+      width: 95%;
+
+      & > svg {
+        margin-right: 6px;
+      }
+
+      & > span {
+        width: calc(100% - 40px);
+
+        @include sub-title;
+        @include ellipsis;
+      }
+    }
+  }
+
+  .info {
+    width: 100%;
+    color: $grey03;
+
+    @include body01;
+    @include ellipsis;
+  }
+
+  .period {
+    width: 100%;
+    color: $blue;
+
+    @include body01;
+  }
+
+  .bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 5px;
+
+    .tag {
+      display: flex;
+      flex-direction: row;
+      /* stylelint-disable-next-line declaration-block-no-redundant-longhand-properties */
+      flex-wrap: wrap;
+
+      & > * {
+        margin-right: 10px;
+      }
+
+      @include gap(8px);
+    }
+  }
+
+  @include gap(10px);
+}

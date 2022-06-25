@@ -1,21 +1,14 @@
 import { useRef, useState } from 'react';
 import cn from 'classnames';
 import ArrowDown from 'public/arrow-down.svg';
+import { MedicalTest } from '~/service';
 import styles from './Accordion.module.scss';
-import { Tag } from '../common';
-
-export interface AccordionProps {
-  date: string;
-  title: string;
-  info: {
-    [key: string]: string | number;
-  };
-  illnessList?: string[];
-}
 
 const Accordion = ({
-  date, title, info, illnessList,
-}: AccordionProps) => {
+  testDate,
+  facilityName,
+  medicalStatusList,
+}: MedicalTest) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -30,42 +23,38 @@ const Accordion = ({
     setIsExpanded(!isExpanded);
   };
 
-  if (!info) {
-    return null;
-  }
-
   return (
     <div className={styles.accordion}>
       <button type="button" onClick={handleClickButton}>
         <div>
-          {date && <span>{date}</span>}
-          {title && <strong>{title}</strong>}
+          {testDate && (
+            <span>{testDate.split('T')[0].split('-').join('.')}</span>
+          )}
+          {facilityName && <strong>{facilityName}</strong>}
         </div>
-        <ArrowDown className={cn({ [styles.expand]: isExpanded })} />
+        <ArrowDown
+          className={cn({
+            [styles.expand]: isExpanded,
+            [styles.close]: !isExpanded,
+          })}
+        />
       </button>
       <div
         className={cn(styles.content, { [styles.expand]: isExpanded })}
         ref={panelRef}
       >
         <div ref={contentRef}>
-          {info && (
+          {medicalStatusList && (
             <table className={styles.table}>
               <tbody>
-                {Object.keys(info).map((each) => (
-                  <tr key={each}>
-                    <td>{each}</td>
-                    <td>{info[each]}</td>
+                {medicalStatusList.map(({ id, testType, value }) => (
+                  <tr key={id}>
+                    <td>{testType}</td>
+                    <td>{value}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
-          )}
-          {illnessList && (
-            <div className={styles['tag-container']}>
-              {illnessList.map((each) => (
-                <Tag key={each} text={each} />
-              ))}
-            </div>
           )}
         </div>
       </div>

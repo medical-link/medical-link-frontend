@@ -1,14 +1,16 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-import { ACCESS_TOKEN } from '~/constants';
+import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
 abstract class BaseApiService {
   protected readonly http: AxiosInstance;
 
   protected constructor(protected readonly path?: string) {
     this.http = axios.create({
-      baseURL: `${process.env.BASE_URL ?? 'http://114.200.215.69:9090'}/api/v1/${path ?? ''}`,
+      baseURL: `http://192.168.0.43:8080/api/v1/${
+        path ?? ''
+      }`,
       headers: {
         'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
       },
     });
   }

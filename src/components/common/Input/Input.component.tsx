@@ -89,8 +89,8 @@ const Input = (
           className={cn({ [styles['error-outline']]: !!error })}
           //   ref={childRef}
           disabled={disabled}
-          {...register}
           {...restProps}
+          {...register}
         />
       </div>
       <div className={styles.error}>{error}</div>

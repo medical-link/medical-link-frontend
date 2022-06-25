@@ -9,8 +9,8 @@
     }
   }
 
-  @mixin skeleton {
-    background-color: $grey06;
+  @mixin skeleton($background-color) {
+    background-color: $background-color;
     background-image:
       linear-gradient(
         90deg,
@@ -29,13 +29,13 @@
     margin-bottom: 25px;
     border-radius: 10px;
 
-    @include skeleton;
+    @include skeleton($grey06);
   }
 
   .bottom {
     height: 249px;
     border-radius: 10px;
 
-    @include skeleton;
+    @include skeleton($grey06);
   }
 }

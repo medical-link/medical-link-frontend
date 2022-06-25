@@ -6,6 +6,7 @@ export interface User {
   sex: '남' | '여';
   userId: string;
   kakaoId: string;
+  illnessList: string[];
 }
 
 export interface UserIdResponseData {
